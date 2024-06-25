@@ -25,6 +25,7 @@ document.addEventListener('keydown', function(event) {
     switch (key) {
       case 'w':
         PlaySound('w');
+        break;
       case 'a':
         PlaySound('a');
         break;
