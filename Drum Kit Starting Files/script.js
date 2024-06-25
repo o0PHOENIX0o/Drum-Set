@@ -27,6 +27,5 @@ function Clicked(buttonClass){
 
 function PlayAudio(AudioFile){
   new Audio(`sounds/${AudioFile}.mp3`).play();
-
 }
 
