@@ -96,6 +96,7 @@ h1 {
   background-size: 15rem; 
   background-position: unset;
   transform: scale(1.05);
+  box-shadow: 3px 6px 16px 0px #da0463;
 }
 
 .pressed {

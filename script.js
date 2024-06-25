@@ -1,50 +1,31 @@
-function PlaySound(b){
-    var button = document.querySelector(`.${b}`);
-    var PressedButton = button.innerText;
-    button.classList.add('pressed');
-    PlayAudio(b);
-    
+var drums = document.querySelectorAll(".drum");
+for(var i = 0; i<drums.length; i++){
+  drums[i].addEventListener('click', function() {
+    Clicked(this.innerText);
+  });
+}
 
-    setTimeout(() => {
-      button.classList.remove('pressed');
-    },1000);
+document.addEventListener('keydown', function(event) {
+  var key = event.key.toLowerCase(); 
+  if(['w','a','s','d','j','k','l'].includes(key)){
+    Clicked(key);
+  }
+});
 
-    
+
+
+
+function Clicked(buttonClass){
+  var button = document.querySelector(`.${buttonClass}`);
+  button.classList.add('pressed');
+  PlayAudio(buttonClass);
+
+  setTimeout(() => {
+    button.classList.remove('pressed');
+  },800);
 }
 
 function PlayAudio(AudioFile){
-    new Audio(`sounds/${AudioFile}.mp3`).play();
-
+  new Audio(`sounds/${AudioFile}.mp3`).play();
 }
 
-
-document.addEventListener('keydown', function(event) {
-    console.log('Key pressed:', event.key);
-    var key = event.key.toLowerCase(); 
-    
-    switch (key) {
-      case 'w':
-        PlaySound('w');
-        break;
-      case 'a':
-        PlaySound('a');
-        break;
-      case 's':
-        PlaySound('s');
-        break;
-      case 'd':
-        PlaySound('d');
-        break;
-      case 'j':
-        PlaySound('j');
-        break;
-      case 'k':
-        PlaySound('k');
-        break;
-      case 'l':
-        PlaySound('l');
-        break;
-      default:
-        break;
-    }
-  });
