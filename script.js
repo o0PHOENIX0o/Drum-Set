@@ -11,26 +11,22 @@ var audioUrl = {
 
 function playAudio(key){
   if (audioUrl[key]) {
-    var button = document.querySelector("."+key);
-    button.classList.add("pressed");
-
+    $("."+key).addClass('pressed');
     new Audio(audioUrl[key]).play();
     
     setTimeout(()=> {
-        button.classList.remove("pressed");
+      $("."+key).removeClass("pressed");
     },400);
   }
 }
 
 
-var drums = document.querySelectorAll(".drum");
-for (var i = 0; i < drums.length; i++) {
-  drums[i].addEventListener('click', function() {
-      var buttonKey = this.innerText.toLowerCase(); 
-      playAudio(buttonKey);
-  });
-}
-
-document.addEventListener('keydown', function (event) {
-  playAudio(event.key);
+$(".drum").click(function (){
+  var buttonKey = this.innerText.toLowerCase(); 
+  playAudio(buttonKey);
 });
+
+
+$(document).keydown(function(event){
+  playAudio(event.key);
+})
